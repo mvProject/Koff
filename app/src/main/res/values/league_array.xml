@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="league_array">
+        <item>Футзал Экстра Лига</item>
+        <item>Футзал Первая Лига</item>
+        <item>Футзал Вторая Лига</item>
+        <item>Футзал Третья Лига</item>
+    </string-array>
+</resources>

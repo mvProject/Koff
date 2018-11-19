@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/leagueFragment"
+            android:icon="@drawable/ic_table"
+            android:title="@string/league_table_menu"/>
+    <item
+            android:id="@+id/scorersFragment"
+            android:icon="@drawable/ic_scorer"
+            android:title="@string/scorers_menu"/>
+    <item
+            android:id="@+id/scheduleFragment"
+            android:icon="@drawable/ic_calendar"
+            android:title="@string/schedule_menu"/>
+</menu>
