@@ -2,21 +2,24 @@ package com.mvproject.koff
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.appizona.yehiahd.fastsave.FastSave
 import kotlinx.android.synthetic.main.activity_main.*
 import com.jaredrummler.materialspinner.MaterialSpinner
 import com.mvproject.koff.misc.*
-import org.jetbrains.anko.doAsync
+import kotlinx.coroutines.*
 import org.jetbrains.anko.indeterminateProgressDialog
-import org.jetbrains.anko.uiThread
-
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+
+    private var myJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,50 +27,73 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
+        FastSave.init(applicationContext)
+
+        initLeagues()
+
         initNavigation()
 
-        if(isConnected(applicationContext)){
-            loadData()
-        }
         initSpinner()
+    }
+
+    /**
+     * Menu Creating
+     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.app_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    /**
+     * Select menu items
+     */
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            R.id.data_refresh -> {
+                if(isConnected(applicationContext)){
+                    getData()
+                }
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initNavigation() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         bottom_nav.setupWithNavController(navController)
         NavigationUI.setupActionBarWithNavController(this, navController)
-        writeLog("navigation init")
     }
 
     private fun initSpinner(){
-        val list = resources.getStringArray(R.array.league_array).toList()
         val spinner = findViewById<MaterialSpinner>(R.id.league_spinner)
-        spinner.setItems(list)
+        spinner.setItems(leagues.map { it.leagueName })
         spinner.setOnItemSelectedListener { view, position, id, item ->
-            val selectedMenu = navController.currentDestination!!.id
-            LEAGUE_SELECTED_NUMBER = position
-            writeLog("league selected - " + LEAGUE_SELECTED_NUMBER.toString())
-            navController.navigate(selectedMenu)
-            writeLog("league selected - " + LEAGUE_SELECTED_NUMBER.toString())
+            reNavigate(position)
         }
-        writeLog("spinner init")
+    }
+
+    private fun reNavigate(position: Int) {
+        val selectedMenu = navController.currentDestination!!.id
+        LEAGUE_SELECTED_NUMBER = position
+        navController.navigate(selectedMenu)
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController,null)
     }
 
-    private fun loadData(){
-        val dialog = this.indeterminateProgressDialog(message = "Please wait a bit…", title = "Fetching data")
+    private fun getData(){
+        val dialog = this.indeterminateProgressDialog(message = "Please wait a bit…")
         dialog.show()
-        doAsync {
-            //extraLeague = getDocumentFromUrl(modeSelect(LEAGUE_SELECTED_NUMBER))
-            loadKoffData()
-            uiThread {
+        myJob = CoroutineScope(Dispatchers.IO).launch {
+            leagues.forEach {
+                KoffDataLoad().getLeagueData(it)
+            }
+            withContext(Dispatchers.Main) {
                 dialog.dismiss()
-                writeLog("loadKoffData loading ended")
-                navController.navigate(R.id.leagueFragment)
             }
         }
     }
+
 }

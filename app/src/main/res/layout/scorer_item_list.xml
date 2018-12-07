@@ -16,7 +16,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="2dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"/>
 
     <TextView
             android:text="playerTeam"

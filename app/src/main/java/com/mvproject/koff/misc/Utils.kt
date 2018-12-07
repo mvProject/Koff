@@ -3,58 +3,23 @@ package com.mvproject.koff.misc
 import android.content.Context
 import android.net.ConnectivityManager
 import android.util.Log
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-
-var TABLE_COUNT = 5
-var LEAGUE_GAMES_COUNT = 6
-val TABLE_RANK = 0
-val TABLE_SCORERS = 1
-var TABLE_SCHEDULE = 3
-val TABLE_DISQ_PLAYERS = 2
-val TABLE_DISQ_ADMIN = 3
-
-val PLAYER_TYPE_PLAYER = "гравець"
-val PLAYER_TYPE_ADMIN = "представник"
+import com.google.gson.Gson
+import com.mvproject.koff.Leagues
 
 var LEAGUE_SELECTED_NUMBER = 0
 
-var extraLeague : Document? = null
-var firstLeague : Document? = null
-var secondLeague : Document? = null
-var thirdLeague : Document? = null
+val leagues = mutableListOf<Leagues>()
 
-
-fun loadKoffData(){
-    extraLeague = getDocumentFromUrl(EXTRA_LEAGUE)
-    writeLog("extraLeague loaded from loadDataKoff")
-    firstLeague = getDocumentFromUrl(FIRST_LEAGUE)
-    writeLog("firstLeague loaded from loadDataKoff")
-    secondLeague = getDocumentFromUrl(SECOND_LEAGUE)
-    writeLog("secondLeague loaded from loadDataKoff")
-    thirdLeague = getDocumentFromUrl(THIRD_LEAGUE)
-    writeLog("thirdLeague loaded from loadDataKoff")
+fun initLeagues() {
+    leagues.add(Leagues("Футзал Экстра Лига", "1246214_11"))
+    leagues.add(Leagues("Футзал Первая Лига", "1246216_11"))
+    leagues.add(Leagues("Футзал Вторая Лига", "1246218_11"))
+    leagues.add(Leagues("Футзал Третья Лига", "1246220_11"))
 }
 
-fun getDocumentFromUrl(urls : String): Document {
-    val conn = Jsoup.connect(urls).timeout(10000)
-    writeLog("StatusCode - " + conn.response().statusCode().toString())
-    return conn.get()
+fun MutableList<*>.JsonOut() : String{
+    return Gson().toJson(this)
 }
-
-fun Document.getTablesCount(): Int = this.select("table").size
-
-fun modeSelect(number : Int) : Document? =
-    when(number){
-        1->firstLeague
-        2->secondLeague
-        3-> thirdLeague
-        else->extraLeague
-    }
-fun setGamesCount(number : Int) = when(number){
-        0-> 6
-        else-> 5
-    }
 
 fun isConnected(ctx : Context): Boolean {
     val cm = ctx.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -84,3 +49,5 @@ fun String.getTeamAwayGoals() : String{
 fun writeLog(msg : String){
     Log.d("Koff",msg)
 }
+
+

@@ -1,15 +1,17 @@
 package com.mvproject.koff.teamRank
 
-data class TeamStat (var teamRank : String,
-                     var teamName : String,
-                     var gamesPlayed : String,
-                     var gamesWin : String,
-                     var gamesDraw : String,
-                     var gamesLost : String,
-                     var goalsOut : String,
-                     var goalsIn : String,
-                     var goalsDiff : String,
-                     var teamPoints : String
+import com.google.gson.annotations.SerializedName
+
+data class TeamStat (@SerializedName("teamRank") var teamRank : String,
+                     @SerializedName("teamName") var teamName : String,
+                     @SerializedName("gamesPlayed") var gamesPlayed : String,
+                     @SerializedName("gamesWin") var gamesWin : String,
+                     @SerializedName("gamesDraw") var gamesDraw : String,
+                     @SerializedName("gamesLost") var gamesLost : String,
+                     @SerializedName("goalsOut") var goalsOut : String,
+                     @SerializedName("goalsIn") var goalsIn : String,
+                     @SerializedName("goalsDiff") var goalsDiff : String,
+                     @SerializedName("teamPoints") var teamPoints : String
 )
 {
     fun statToString():String = "$gamesPlayed   $gamesWin-$gamesDraw-$gamesLost   $goalsOut-$goalsIn $goalsDiff"
