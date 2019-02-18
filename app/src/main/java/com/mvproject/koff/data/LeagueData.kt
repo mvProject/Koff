@@ -1,5 +1,8 @@
-package com.mvproject.koff
+package com.mvproject.koff.data
 
+/**
+ * league data class.
+ */
 data class LeagueData (
     var leagueName : String,
     var leagueTable : String,

@@ -3,11 +3,16 @@
     <string name="league_table_menu">Таблица</string>
     <string name="scorers_menu">Бомбардиры</string>
     <string name="schedule_menu">Календарь</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Remove or change this placeholder text -->
     <string name="league_blank_fragment">league blank fragment</string>
     <string name="scorers_blank_fragment">scorers blank fragment</string>
     <string name="schedule_blank_fragment">schedule blank fragment</string>
     <string name="bundle_empty_msg">bundle empty</string>
     <string name="no_connection_message">Нет соединения</string>
+    <!-- Remove or change this placeholder text -->
+    <string name="header_template">Header</string>
+    <string name="time_template">12:00</string>
+    <string name="team_name_home_template">teamHome</string>
+    <string name="team_name_away_template">teamAway</string>
+    <string name="score_template_template">3</string>
 </resources>

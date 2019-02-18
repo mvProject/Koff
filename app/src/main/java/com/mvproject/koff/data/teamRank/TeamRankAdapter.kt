@@ -1,4 +1,4 @@
-package com.mvproject.koff.teamRank
+package com.mvproject.koff.data.teamRank
 
 import android.content.Context
 import android.view.LayoutInflater

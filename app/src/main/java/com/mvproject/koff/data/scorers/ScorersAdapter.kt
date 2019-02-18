@@ -1,4 +1,4 @@
-package com.mvproject.koff.scorers
+package com.mvproject.koff.data.scorers
 
 import android.content.Context
 import android.view.LayoutInflater

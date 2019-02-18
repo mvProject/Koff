@@ -1,4 +1,4 @@
-package com.mvproject.koff.scorers
+package com.mvproject.koff.data.scorers
 
 data class Scorer (var player : String,
                    var team : String,

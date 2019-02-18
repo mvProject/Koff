@@ -1,4 +1,4 @@
-package com.mvproject.koff.scorers
+package com.mvproject.koff.data.scorers
 
 import android.view.View
 import android.widget.TextView

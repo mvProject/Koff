@@ -12,6 +12,7 @@ import com.appizona.yehiahd.fastsave.FastSave
 import kotlinx.android.synthetic.main.activity_main.*
 import com.jaredrummler.materialspinner.MaterialSpinner
 import com.mvproject.koff.misc.*
+import com.mvproject.koff.network.KoffDataLoad
 import kotlinx.coroutines.*
 import org.jetbrains.anko.indeterminateProgressDialog
 
@@ -37,15 +38,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Menu Creating
+     * Refresh Menu Creating
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.app_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
     /**
-     * Select menu items
+     * Get data on refresh click
      */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
@@ -58,13 +58,17 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
+    /**
+     * Init Bottom Navigation
+     */
     private fun initNavigation() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         bottom_nav.setupWithNavController(navController)
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
-
+    /**
+     * Create spinner and fill with league names
+     */
     private fun initSpinner(){
         val spinner = findViewById<MaterialSpinner>(R.id.league_spinner)
         spinner.setItems(leagues.map { it.leagueName })
@@ -72,17 +76,24 @@ class MainActivity : AppCompatActivity() {
             reNavigate(position)
         }
     }
-
+    /**
+     * Navigate to same menu item
+     * and to same league
+     */
     private fun reNavigate(position: Int) {
         val selectedMenu = navController.currentDestination!!.id
         LEAGUE_SELECTED_NUMBER = position
         navController.navigate(selectedMenu)
     }
-
+    /**
+     * Navigate Menu Up Creating
+     */
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController,null)
     }
-
+    /**
+     * Fetch data from internet and backup in prefs
+     */
     private fun getData(){
         val dialog = this.indeterminateProgressDialog(message = "Please wait a bit…")
         dialog.show()
@@ -92,8 +103,10 @@ class MainActivity : AppCompatActivity() {
             }
             withContext(Dispatchers.Main) {
                 dialog.dismiss()
+                reNavigate(LEAGUE_SELECTED_NUMBER)
             }
         }
     }
+
 
 }

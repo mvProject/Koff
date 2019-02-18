@@ -1,4 +1,4 @@
-package com.mvproject.koff.teamRank
+package com.mvproject.koff.data.teamRank
 
 import android.view.View
 import android.widget.TextView

@@ -7,17 +7,17 @@
 
     <fragment
             android:id="@+id/leagueFragment"
-            android:name="com.mvproject.koff.LeagueFragment"
+            android:name="com.mvproject.koff.fragments.LeagueFragment"
             android:label="@string/league_table_menu"
             tools:layout="@layout/fragment_league"/>
     <fragment
             android:id="@+id/scheduleFragment"
-            android:name="com.mvproject.koff.ScheduleFragment"
+            android:name="com.mvproject.koff.fragments.ScheduleFragment"
             android:label="@string/schedule_menu"
             tools:layout="@layout/fragment_schedule"/>
     <fragment
             android:id="@+id/scorersFragment"
-            android:name="com.mvproject.koff.ScorersFragment"
+            android:name="com.mvproject.koff.fragments.ScorersFragment"
             android:label="@string/scorers_menu"
             tools:layout="@layout/fragment_scorers"/>
 </navigation>
