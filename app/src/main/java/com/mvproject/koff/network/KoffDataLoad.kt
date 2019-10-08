@@ -1,5 +1,6 @@
 package com.mvproject.koff.network
 
+import android.util.Log
 import com.appizona.yehiahd.fastsave.FastSave
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.mvproject.koff.data.LeagueData
@@ -21,14 +22,17 @@ class KoffDataLoad {
         val table = api.getLeagueTable(league.leagueUrl).await()
         val scorers = api.getLeagueScorers(league.leagueUrl).await()
         val calendar = api.getLeagueSchedule(league.leagueUrl).await()
-        val data =
-            LeagueData(
-                league.leagueName,
-                table.JsonOut(),
-                scorers.JsonOut(),
-                calendar.JsonOut()
-            )
-        FastSave.getInstance().saveObject(league.leagueName,data)
+        if (table.isNotEmpty() and scorers.isNotEmpty() and calendar.isNotEmpty())
+        {
+            val data =
+                LeagueData(
+                    league.leagueName,
+                    table.JsonOut(),
+                    scorers.JsonOut(),
+                    calendar.JsonOut()
+                )
+            FastSave.getInstance().saveObject(league.leagueName,data)
+        }
     }
 
     /**

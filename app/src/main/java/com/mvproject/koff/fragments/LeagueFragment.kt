@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.appizona.yehiahd.fastsave.FastSave
 import com.google.gson.Gson
 import com.mvproject.koff.data.LeagueData

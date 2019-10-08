@@ -22,12 +22,12 @@ interface KoffApi {
         @Path("league") league : String
     ) : Deferred<MutableList<Scorer>>
     // get league schedule data
-    @GET("calendar/{league}")
+    @GET("schedule/{league}")
     fun getLeagueSchedule(
         @Path("league") league : String
     ) : Deferred<MutableList<GameWeek>>
 
     companion object {
-        val BASE_URL = "http://mvpapi.herokuapp.com/koff/futsal/"
+        val BASE_URL = "http://mvpapi.herokuapp.com/footpass/"
     }
 }
