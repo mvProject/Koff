@@ -1,15 +1,12 @@
 package com.mvproject.koff.data.scorers
 
-import android.content.Context
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mvproject.koff.R
 
-class ScorersAdapter(var scorers: MutableList<Scorer>, var context: Context) : RecyclerView.Adapter<ScorersViewHolder>() {
+class ScorersAdapter(var scorers: MutableList<Scorer>) : RecyclerView.Adapter<ScorersViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScorersViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.scorer_item_list, parent, false)
-        return ScorersViewHolder(view)
+
+        return ScorersViewHolder(parent)
     }
 
     override fun getItemCount(): Int {
@@ -17,6 +14,6 @@ class ScorersAdapter(var scorers: MutableList<Scorer>, var context: Context) : R
     }
 
     override fun onBindViewHolder(holder: ScorersViewHolder, position: Int) {
-        holder.bindNote(scorers[position])
+        holder.bindItem(scorers[position])
     }
 }

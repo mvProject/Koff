@@ -39,7 +39,7 @@ class ScorersFragment : Fragment() {
             // cast json to scorers list
             scorers = Gson().fromJson(data.leagueScorers,Array<Scorer>::class.java).toMutableList()
             scorersList.layoutManager = LinearLayoutManager(context)
-            scorersList.adapter = ScorersAdapter(scorers, context!!)
+            scorersList.adapter = ScorersAdapter(scorers)
         }
         else{
             writeLog("scorers key $key not found")

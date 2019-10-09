@@ -3,6 +3,7 @@ package com.mvproject.koff.misc
 import android.content.Context
 import android.net.ConnectivityManager
 import android.util.Log
+import androidx.core.content.ContextCompat.getSystemService
 import com.google.gson.Gson
 import com.mvproject.koff.data.Leagues
 
@@ -33,6 +34,7 @@ fun isConnected(ctx : Context): Boolean {
     val activeNetwork = cm.activeNetworkInfo
     return activeNetwork != null && activeNetwork.isConnected
 }
+
 /**
  * Extract home team goals from Score string
  */
@@ -57,6 +59,21 @@ fun String.getTeamAwayGoals() : String{
         this
     }
 }
+
+fun String.getTeamWinning() : String{
+    return try{
+        val goals = this.split(":")
+        when{
+            goals[0]>goals[1]->1.toString()
+            goals[0]<goals[1]->2.toString()
+            else->0.toString()
+        }
+    }
+    catch(e: Exception){
+        this
+    }
+}
+
 /**
  * Simplifying writing debug logs
  */

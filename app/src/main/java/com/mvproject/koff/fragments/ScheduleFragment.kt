@@ -26,10 +26,6 @@ import com.mvproject.koff.data.gameSchedule.GameItem
 class ScheduleFragment : Fragment() {
     private var gameWeeks = mutableListOf<GameWeek>()
 
-  //  lateinit var adapter: RecyclerViewAdapter
-  //  private var layoutManager: LinearLayoutManager? = null
-  //  private var kmHeaderItemDecoration: KmHeaderItemDecoration? = null
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
 
         // Inflate the layout for this fragment
@@ -37,34 +33,7 @@ class ScheduleFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      initGamesList()
-      /*
-        // name of selected league
-        val key = leagues[LEAGUE_SELECTED_NUMBER].leagueName
-        // try to load data from prefs
-        if (FastSave.getInstance().isKeyExists(key)){
-            writeLog("schedule key $key found")
-
-            // get schedule data from prefs
-            val data = FastSave.getInstance().getObject(key,LeagueData::class.java)
-            // cast json to gameweeks list
-            gameWeeks = Gson().fromJson(data.leagueSchedule,Array<GameWeek>::class.java).toMutableList()
-            //create headers list
-            val sections = ArrayList<GameWeek>()
-            gameWeeks.forEach {
-                 //add gameweek info and list of games to headers
-                sections.add(GameWeek(0,it.weekNumber,it.weekDate,it.Games))
-            }
-            val adapterRecycler = AdapterSectionRecycler(this.context!!, sections)
-            // Add the sticky headers decoration
-
-            scheduleList.layoutManager = LinearLayoutManager(context)
-            scheduleList.adapter = adapterRecycler
-        }
-        else{
-            writeLog("schedule key $key not found")
-        }
-        */
+        initGamesList()
     }
 
 
@@ -131,7 +100,6 @@ class ScheduleFragment : Fragment() {
                 cells.add(GameHolder(game))
             }
         }
-       // val Games = data2
         return cells
     }
 }

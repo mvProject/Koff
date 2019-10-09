@@ -42,7 +42,7 @@ class LeagueFragment : Fragment() {
             // cast json to teams list
             teamStats = Gson().fromJson(data.leagueTable,Array<TeamStat>::class.java).toMutableList()
             teamRankList.layoutManager = LinearLayoutManager(context)
-            teamRankList.adapter = TeamRankAdapter(teamStats, context!!)
+            teamRankList.adapter = TeamRankAdapter(teamStats)
         }
         else{
             writeLog("league key $key not found")
