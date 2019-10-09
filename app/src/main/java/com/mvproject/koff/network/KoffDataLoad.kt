@@ -1,6 +1,5 @@
 package com.mvproject.koff.network
 
-import android.util.Log
 import com.appizona.yehiahd.fastsave.FastSave
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.mvproject.koff.data.LeagueData
@@ -35,8 +34,8 @@ class KoffDataLoad {
         }
     }
 
-    /**
-     * Retrofit Initialization
+    /**r
+     * Retrofit Initializationr
      */
     private fun initApi() : KoffApi {
 
