@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         initNavigation()
 
         initSpinner()
+
+       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }
 
     /**
@@ -64,11 +67,12 @@ class MainActivity : AppCompatActivity() {
     private fun initNavigation() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         bottom_nav.setupWithNavController(navController)
-        NavigationUI.setupActionBarWithNavController(this, navController)
+       // NavigationUI.setupActionBarWithNavController(this, navController)
     }
     /**
      * Create spinner and fill with league names
      */
+
     private fun initSpinner(){
         val spinner = findViewById<MaterialSpinner>(R.id.league_spinner)
         spinner.setItems(leagues.map { it.leagueName })
