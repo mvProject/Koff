@@ -15,10 +15,11 @@ val leagues = mutableListOf<Leagues>()
  * Init available leagues
  */
 fun initLeagues() {
-    leagues.add(Leagues("Футзал Экстра Лига", "30000814"))
-    leagues.add(Leagues("Футзал Первая Лига", "30000815"))
-    leagues.add(Leagues("Футзал Вторая Лига", "30000816"))
-    leagues.add(Leagues("Футзал Третья Лига", "30000817"))
+    leagues.add(Leagues("Футзал Экстра Лига", "30001470"))
+    leagues.add(Leagues("Футзал Первая Лига", "30001471"))
+    leagues.add(Leagues("Футзал Вторая Лига", "30001472"))
+    leagues.add(Leagues("Футзал Третья Лига", "30001473"))
+    leagues.add(Leagues("Футзал Четвертая Лига", "30001474"))
 }
 /**
  * Cast list to json
