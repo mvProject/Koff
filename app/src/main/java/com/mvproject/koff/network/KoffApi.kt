@@ -13,21 +13,21 @@ import retrofit2.http.Path
 interface KoffApi {
     // get league table data
     @GET("table/{league}")
-    fun getLeagueTable(
+    fun getLeagueTableAsync(
         @Path("league") league : String
     ) : Deferred<MutableList<TeamStat>>
     // get league scorers data
     @GET("scorers/{league}")
-    fun getLeagueScorers(
+    fun getLeagueScorersAsync(
         @Path("league") league : String
     ) : Deferred<MutableList<Scorer>>
     // get league schedule data
     @GET("schedule/{league}")
-    fun getLeagueSchedule(
+    fun getLeagueScheduleAsync(
         @Path("league") league : String
     ) : Deferred<MutableList<GameWeek>>
 
     companion object {
-        val BASE_URL = "http://mvpapi.herokuapp.com/footpass/"
+        const val BASE_URL = "http://mvpapi.herokuapp.com/footpass/"
     }
 }

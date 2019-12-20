@@ -3,6 +3,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:background="@color/colorBackgroundHigh"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context=".fragments.ScheduleFragment">
 
@@ -14,7 +15,7 @@
             app:srv_showDivider="true"
             app:srv_showLastDivider="true"
             app:srv_dividerOrientation="both"
-            app:srv_dividerColor="@color/primaryLightColor"
+            app:srv_dividerColor="@color/colorDivider"
             app:srv_dividerPaddingLeft="2dp"
             app:srv_dividerPaddingRight="2dp"
             app:srv_dividerPaddingTop="2dp"

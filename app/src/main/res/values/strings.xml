@@ -1,13 +1,15 @@
 <resources>
-    <string name="app_name">Koff</string>
+    <string name="app_name">КОФФ</string>
     <string name="league_table_menu">Таблица</string>
     <string name="scorers_menu">Бомбардиры</string>
     <string name="schedule_menu">Календарь</string>
-    <!-- Remove or change this placeholder text -->
+    <!-- Remove or change this placeholder text
     <string name="league_blank_fragment">league blank fragment</string>
     <string name="scorers_blank_fragment">scorers blank fragment</string>
     <string name="schedule_blank_fragment">schedule blank fragment</string>
+
     <string name="bundle_empty_msg">bundle empty</string>
+        -->
     <string name="no_connection_message">Нет соединения</string>
     <!-- Remove or change this placeholder text -->
     <string name="header_template">Header</string>
@@ -15,11 +17,5 @@
     <string name="team_name_home_template">teamHome</string>
     <string name="team_name_away_template">teamAway</string>
     <string name="score_template_template">3</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
 
 </resources>

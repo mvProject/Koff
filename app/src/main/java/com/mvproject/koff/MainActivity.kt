@@ -6,7 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.appizona.yehiahd.fastsave.FastSave
@@ -16,6 +18,7 @@ import com.mvproject.koff.misc.*
 import com.mvproject.koff.network.KoffDataLoad
 import kotlinx.coroutines.*
 import org.jetbrains.anko.indeterminateProgressDialog
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
         setSupportActionBar(toolbar)
 
         FastSave.init(applicationContext)
@@ -36,8 +41,6 @@ class MainActivity : AppCompatActivity() {
         initNavigation()
 
         initSpinner()
-
-       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }
 
     /**
@@ -74,9 +77,8 @@ class MainActivity : AppCompatActivity() {
      */
 
     private fun initSpinner(){
-        val spinner = findViewById<MaterialSpinner>(R.id.league_spinner)
-        spinner.setItems(leagues.map { it.leagueName })
-        spinner.setOnItemSelectedListener { view, position, id, item ->
+        league_spinner.setItems(leagues.map { it.leagueName })
+        league_spinner.setOnItemSelectedListener { view, position, id, item ->
             reNavigate(position)
         }
     }

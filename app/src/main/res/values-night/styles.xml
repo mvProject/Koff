@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
+
     <!-- Style for toolbars -->
     <style name="ToolbarTheme">
         <item name="android:background">@color/colorBackgroundHigh</item>
@@ -124,5 +125,4 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">?android:attr/listDivider</item>
     </style>
-
 </resources>

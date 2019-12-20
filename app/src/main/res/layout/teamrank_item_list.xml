@@ -12,21 +12,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="1dp"
+
             android:layout_marginBottom="2dp">
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/team_card_background">
-
+                android:background="@color/colorBackgroundHigh"
+                >
                 <TextView
                         android:id="@+id/teamRank"
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rank_background"
+                        style="@style/TextStyleTeamRank.Rank"
                         android:text="@{TeamModel.teamRank}"
-                        android:textAlignment="center"
-                        android:textSize="18sp"
-                        android:padding="8dp"
                         app:layout_constraintBottom_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="parent"
@@ -34,12 +30,9 @@
 
                 <TextView
                         android:id="@+id/teamName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="45dp"
+                        style="@style/TextStyleTeamRank.Team"
                         android:text="@{TeamModel.TeamName}"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp"
+
                         app:layout_constraintBottom_toTopOf="@id/teamStats"
                         app:layout_constraintEnd_toStartOf="@id/teamPoints"
                         app:layout_constraintStart_toEndOf="@id/teamRank"
@@ -48,10 +41,9 @@
 
                 <TextView
                         android:id="@+id/teamStats"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/TextStyleTeamRank.Stats"
                         android:text="@{TeamModel.statToString()}"
-                        android:layout_marginStart="45dp"
+
                         app:layout_constraintBottom_toTopOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/teamPoints"
                         app:layout_constraintStart_toEndOf="@id/teamRank"
@@ -59,14 +51,10 @@
                         tools:text="teamStat" />
                 <TextView
                         android:id="@+id/teamPoints"
-                        android:layout_width="40dp"
+                        style="@style/TextStyleTeamRank.Points"
                         android:layout_height="match_parent"
                         android:text="@{TeamModel.teamPoints}"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18sp"
-                        android:padding="8dp"
-                        android:background="@drawable/points_background"
-                        android:textAlignment="center"
+
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

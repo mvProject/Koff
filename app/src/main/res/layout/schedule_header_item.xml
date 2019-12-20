@@ -1,34 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:layout_width="match_parent"
-              android:background="@color/primaryLightColor"
-              android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorBackgroundHigh"
+        android:layout_height="match_parent">
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textStyle="bold|italic"
-            android:text="@string/header_template"
             android:id="@+id/gameWeekNumber"
-            android:padding="10dp"
-            android:layout_gravity="start"
-            android:textColor="@color/primaryTextColor"
-            android:layout_weight="1"
-            android:textAlignment="center"/>
+            style="@style/TextStyleHeader"
+            android:layout_toEndOf="@id/gameDate"
+            tools:text="WeekNumber"/>
 
     <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textStyle="bold|italic"
-            android:text="@string/header_template"
             android:id="@+id/gameDate"
-            android:padding="10dp"
-            android:layout_gravity="end"
-            android:textColor="@color/primaryTextColor"
-            android:layout_weight="3"
-            android:textAlignment="center"/>
-</LinearLayout>
+            style="@style/TextStyleHeader"
+            tools:text="GameDate"/>
+</RelativeLayout>
+
+</layout>

@@ -6,6 +6,7 @@ import com.mvproject.koff.data.LeagueData
 import com.mvproject.koff.data.Leagues
 import com.mvproject.koff.misc.JsonOut
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -18,9 +19,9 @@ class KoffDataLoad {
      * saving in prefs
      */
     suspend fun getLeagueData(league : Leagues) {
-        val table = api.getLeagueTable(league.leagueUrl).await()
-        val scorers = api.getLeagueScorers(league.leagueUrl).await()
-        val calendar = api.getLeagueSchedule(league.leagueUrl).await()
+        val table = api.getLeagueTableAsync(league.leagueUrl).await()
+        val scorers = api.getLeagueScorersAsync(league.leagueUrl).await()
+        val calendar = api.getLeagueScheduleAsync(league.leagueUrl).await()
         if (table.isNotEmpty() and scorers.isNotEmpty() and calendar.isNotEmpty())
         {
             val data =
@@ -39,16 +40,18 @@ class KoffDataLoad {
      */
     private fun initApi() : KoffApi {
 
-        val gson = GsonConverterFactory.create()
+        val logInterceptor = HttpLoggingInterceptor()
+        logInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val apiClient = OkHttpClient.Builder()
-            .connectTimeout(30,TimeUnit.SECONDS)
+            .readTimeout(15,TimeUnit.SECONDS)
+            .addInterceptor(logInterceptor)
             .build()
 
         return Retrofit.Builder().apply {
             baseUrl(KoffApi.BASE_URL)
             addCallAdapterFactory(CoroutineCallAdapterFactory())
-            addConverterFactory(gson)
+            addConverterFactory(GsonConverterFactory.create())
             client(apiClient)
         }.build().create(KoffApi::class.java)
     }

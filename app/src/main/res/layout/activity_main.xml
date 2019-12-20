@@ -12,17 +12,16 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?colorPrimary"
-                    android:theme="@style/ToolbarTheme"/>
+                    app:titleTextColor="@color/colorToolbarText"
+                    android:theme="@style/ToolbarTheme"
+                    />
 
             <com.jaredrummler.materialspinner.MaterialSpinner
                     android:id="@+id/league_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:ms_background_color="@color/primaryLightColor"
-                    app:ms_text_color="@color/primaryTextColor"
+                    app:ms_background_color="@color/colorBackgroundHigh"
                     />
-
             <fragment
                     android:id="@+id/nav_host_fragment"
                     android:layout_width="match_parent"
@@ -30,14 +29,15 @@
                     android:layout_weight="1"
                     android:name="androidx.navigation.fragment.NavHostFragment"
                     app:navGraph="@navigation/mobile_navigation"
-                    app:defaultNavHost="false"/>
+                    app:defaultNavHost="false"
+                    />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/BottomViewTheme"
+                app:menu="@menu/bottom_nav"/>
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_nav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/bottom_nav"/>
 </LinearLayout>
 
